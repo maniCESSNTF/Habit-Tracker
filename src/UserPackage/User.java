@@ -48,6 +48,6 @@ return AP;
         System.out.println("password :"+password);
         System.out.println("first name :"+first_name);
         System.out.println("last name :"+last_name);
-        System.out.println("email :"+email);
+        System.out.println("emailLLL :"+email);
     }
 }
