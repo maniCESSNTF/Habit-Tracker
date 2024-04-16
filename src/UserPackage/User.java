@@ -11,7 +11,8 @@ public class User {
     private String password;
     private String first_name,last_name,email;
     public int streak;
-
+    Utility utility=new Utility();
+    
     public void setEmail(String email) {
         this.email = email;
     }
@@ -113,12 +114,7 @@ public class User {
         return newTask;
     }
 
-    public boolean isEmailValid(String email) {
-        if (email.endsWith("@gmail.com")) {
-            return true;
-        } else
-            return false;
-    }
+   
 
     public String getFullName(User user) {
         if (first_name != null && last_name != null) {
@@ -133,7 +129,7 @@ public class User {
         setPassword(password);
         setFirst_name(first_name);
         setLast_name(last_name);
-        while(!isEmailValid(email)){
+        while(!utility.isEmailValid(email)){
             System.out.println("Email does not  end with @gmail.com");
 
             email = Scan.next();
