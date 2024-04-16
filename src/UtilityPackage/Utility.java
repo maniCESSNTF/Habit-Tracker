@@ -23,4 +23,13 @@ public class Utility{
         }
         else return false;
     }
+
+
+      public boolean isEmailValid(String email){
+                       if(Pattern.matches("[^@ \\t\\r\\n]+@[^@ \\t\\r\\n]+\\.[^@ \\t\\r\\n]+", email)){
+                        return true;
+                       }
+    else return false;
+
+}
 }
