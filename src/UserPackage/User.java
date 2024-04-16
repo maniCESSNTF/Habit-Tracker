@@ -50,17 +50,36 @@ public class User {
         this.username = username;
     }
 
-    public  void setPassword(String password) {
-        if (Utility.isPasswordValid(password)) {
-            this.password = password;}
-        
-else {
-        do{
+   public  void setPassword(String password) {
+        if (!Utility.isPasswordValid(password)){
+         do{
             System.out.println("try another password");
             String newpass=Scan.next();
-            this.password=newpass;
-        }while(!Utility.isPasswordValid(password));}
+            password=newpass;
+        }while(!Utility.isPasswordValid(password)&&!password.equals(null));
+    this.password=password;}
+        
+else {
+            this.password = password;}
+        
         }
+
+
+
+    //     public  void setPassword(String password) {
+    //         if (Utility.isPasswordValid(password)) {
+    //             this.password = password;}
+            
+    // else {
+    //         while(!Utility.isPasswordValid(password));{
+    //             System.out.println("try another password");
+    //             String newpass=Scan.next();
+    //             password=newpass;
+    //         }
+    //             this.password=password;}
+    //         }
+
+
     
     public String getFullName(){
         return  first_name + last_name;
