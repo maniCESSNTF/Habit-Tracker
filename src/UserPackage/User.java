@@ -16,7 +16,7 @@ public class User {
         this.email = email;
     }
     public void settaskCount(int taskCount){
-    this.taskCount=taskCount;
+        this.taskCount=taskCount;
     }
     public void setFirst_name(String first_name) {
         for(int i=0;i<first_name.length();i++){
@@ -26,9 +26,9 @@ public class User {
                 first_name = new String(charArray); // تبدیل آرایه کاراکتر به رشته
             }
         }
-            char[] charArray = first_name.toCharArray();
-            charArray[0] = (char) (charArray[0] - 32);
-            first_name = new String(charArray); // تبدیل آرایه کاراکتر به رشته
+        char[] charArray = first_name.toCharArray();
+        charArray[0] = (char) (charArray[0] - 32);
+        first_name = new String(charArray); // تبدیل آرایه کاراکتر به رشته
         this.first_name=first_name;
     }
     public void setLast_name(String Last_name) {
@@ -41,46 +41,29 @@ public class User {
                 Last_name = new String(charArray); // تبدیل آرایه کاراکتر به رشته
             }
         }
-            char[] charArray = Last_name.toCharArray();
-            charArray[0] = (char) (charArray[0] - 32);
-            Last_name = new String(charArray); // تبدیل آرایه کاراکتر به رشته
+        char[] charArray = Last_name.toCharArray();
+        charArray[0] = (char) (charArray[0] - 32);
+        Last_name = new String(charArray); // تبدیل آرایه کاراکتر به رشته
         this.last_name=Last_name;
     }
     public void setUsername(String username) {
         this.username = username;
     }
 
-   public  void setPassword(String password) {
+    public  void setPassword(String password) {
         if (!Utility.isPasswordValid(password)){
-         do{
-            System.out.println("try another password");
-            String newpass=Scan.next();
-            password=newpass;
-        }while(!Utility.isPasswordValid(password)&&!password.equals(null));
-    this.password=password;}
-        
-else {
+            do{
+                System.out.println("try another password");
+                String newpass=Scan.next();
+                password=newpass;
+            }while(!Utility.isPasswordValid(password)&&!password.equals(null));
+            this.password=password;}
+
+        else {
             this.password = password;}
-        
-        }
 
+    }
 
-
-    //     public  void setPassword(String password) {
-    //         if (Utility.isPasswordValid(password)) {
-    //             this.password = password;}
-            
-    // else {
-    //         while(!Utility.isPasswordValid(password));{
-    //             System.out.println("try another password");
-    //             String newpass=Scan.next();
-    //             password=newpass;
-    //         }
-    //             this.password=password;}
-    //         }
-
-
-    
     public String getFullName(){
         return  first_name + last_name;
     }
@@ -101,7 +84,7 @@ else {
             if (tasks[i].getname().equals (taskName))
                 return false;
         }
-         return true;
+        return true;
     }
     public Task createTask(String name,String color) {
         String TASKname = null;
@@ -118,16 +101,16 @@ else {
         else if(!Task.isColorValid(color)){
             String newColor = null;
             do{
-                   System.out.println("Text entered for color. It is not acceptable!");
-                   System.out.println("Please try again!");
-                    newColor = Scan.next();
+                System.out.println("Text entered for color. It is not acceptable!");
+                System.out.println("Please try again!");
+                newColor = Scan.next();
 
-             }while(!Task.isColorValid(newColor));
+            }while(!Task.isColorValid(newColor));
         }
-            Task newTask = new Task(name,username,color);
-            tasks[this.gettaskCount()] = newTask;
-            settaskCount(gettaskCount() + 1);
-            return newTask;
+        Task newTask = new Task(name,username,color);
+        tasks[this.gettaskCount()] = newTask;
+        settaskCount(gettaskCount() + 1);
+        return newTask;
     }
 
     public boolean isEmailValid(String email) {
@@ -145,51 +128,50 @@ else {
         }
     }
 
-
     public User (String username,String password,String first_name,String last_name,String email){
-    setUsername(username);
-    setPassword(password);
-    setFirst_name(first_name);
-    setLast_name(last_name);
-    while(!isEmailValid(email)){
-    System.out.println("Email does not  end with @gmail.com");
+        setUsername(username);
+        setPassword(password);
+        setFirst_name(first_name);
+        setLast_name(last_name);
+        while(!isEmailValid(email)){
+            System.out.println("Email does not  end with @gmail.com");
 
-email = Scan.next();
-    };
-    setEmail(email);
-}
-public Task getTaskByName(String TaskName){
+            email = Scan.next();
+        };
+        setEmail(email);
+    }
+    public Task getTaskByName(String TaskName){
         for(int i=0;i<gettaskCount();i++) {
             if (tasks[i].getname().equals(TaskName))
                 return tasks[i];
         }
-                System.out.println("is not any task whit this name");
-    return null;
-}
-public Task[] getTaskByColor(String tasksColor){
-        Task  ColorTasks[];
-        int find=0;
-    for(int i=0;i<gettaskCount();i++) {
-        if (tasks[i].getColor().equals(tasksColor))
-            find++;
-    }
-    if(find==0){
-        System.out.println("There are no task with the  color.");
+        System.out.println("is not any task whit this name");
         return null;
     }
-    else{
-    ColorTasks=new Task[find];
-    int z = 0;
-
-    for (int i = 0; i < gettaskCount(); i++) {
-        if (tasks[i].getColor().equals(tasksColor)) {
-            ColorTasks[z] = tasks[i];
-            z++;
+    public Task[] getTaskByColor(String tasksColor){
+        Task  ColorTasks[];
+        int find=0;
+        for(int i=0;i<gettaskCount();i++) {
+            if (tasks[i].getColor().equals(tasksColor))
+                find++;
         }
-    }
+        if(find==0){
+            System.out.println("There are no task with the  color.");
+            return null;
+        }
+        else{
+            ColorTasks=new Task[find];
+            int z = 0;
 
-    return ColorTasks;}
-}
+            for (int i = 0; i < gettaskCount(); i++) {
+                if (tasks[i].getColor().equals(tasksColor)) {
+                    ColorTasks[z] = tasks[i];
+                    z++;
+                }
+            }
+
+            return ColorTasks;}
+    }
 
     public  void printUserInfo() {
         System.out.println("username :"+username);
@@ -197,5 +179,4 @@ public Task[] getTaskByColor(String tasksColor){
         System.out.println("name :"+getFullName());
         System.out.println("email :"+email);
     }
-   }
-   
+}
