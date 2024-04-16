@@ -65,8 +65,9 @@ public class User {
 
     }
 
-    public String getFullName(){
-        return  first_name + last_name;
+   public String getFullName(){
+        String fullName=first_name.concat(last_name);
+        return  fullName;
     }
     public String getemail(){
         return  email;
