@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Task {
     Scanner Scan = new Scanner(System.in);
-    private String  color;
+    final String color;
     private Double start_time,finish_time, newTime;
     public String name,user;
 
@@ -41,10 +41,6 @@ public class Task {
         }
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
     public String getColor() {
         return color;
     }
@@ -68,18 +64,14 @@ public class Task {
         return true;
     }
 
-    public Task(String name) {
-        this.setName(name);
-    }
-
-
     public Task(String name, String user) {
         setName(name);
         this.setUser(user);
+        this.color=null;
     }
 
-    public Task(String name, String user, String color1) {
-        this.color = color1;
+    public Task(String name, String user, String color) {
+        this.color = color;
         setName(name);
         setUser(user);
     }
